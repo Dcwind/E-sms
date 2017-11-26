@@ -17,3 +17,9 @@ app.use(express.static(__dirname + '/public'));
 // use body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Define port 
+const port = 3000;
+
+// server
+const server = app.listen(port, () => console.log(`Server started on port ${port}`));
