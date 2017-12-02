@@ -4,6 +4,13 @@ const express = require('express'),
       Nexmo = require('nexmo'),
       socketio = require('socket.io');
 
+
+// Init Nexmo
+const nexmo = new Nexmo({
+    apiKey: 'f76ec4fa',
+    apiSecret: 'c1f79bc1874de164'
+}, {debug: true});
+
 // init app
 const app = express();
 
@@ -30,12 +37,28 @@ app.get('/', (req,res) => {
 // Index route
 
 app.post('/', (req,res) => {
-    res.send(req.body);
-    console.log(req.body)
+    // res.send(req.body);
+    // console.log(req.body)
+    const number = req.body.number,
+          text = req.body.text;
+
+    nexmo.message.sendSms(
+      'NEXMO', number, text, { type: 'unicode' },
+      (err, responseData) => {
+          if(err){
+              console.log(err);
+          }else {
+              console.dir(responseData);
+          }
+      }
+    );
 })
 
-// Init Nexmo
- const nexmo = new Nexmo({
-     apiKey: '',
-     apiSecret: ''
- }, {debug: true});
+const io = socketio(server);
+io.on('connection', (socket) => {
+    console.log('Connected');
+    io.on('disconnect', () => {
+        console.log('Disconnected');
+    })
+})
+
