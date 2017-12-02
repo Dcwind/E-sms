@@ -5,6 +5,12 @@ const numberInput = document.getElementById('number'),
 
 button.addEventListener('click', send, false);
 
+socket = io();
+
+socket.on('smsStatus', (data) => {
+    status.innerHTML = `<h5>Text message has be sent to ${data.number}</h5>`; 
+})
+
 function send () {
     const number = numberInput.value.replace(/\D/g, ''),
           text = textInput.value;
