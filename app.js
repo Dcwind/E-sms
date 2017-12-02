@@ -49,6 +49,14 @@ app.post('/', (req,res) => {
               console.log(err);
           }else {
               console.dir(responseData);
+
+              const data = {
+                id: responseData.messages[0]['message-id'],
+                number: responseData.messages[0]['to']
+              }
+
+              // Emit to client
+              io.emit('smsStatus', data);
           }
       }
     );
