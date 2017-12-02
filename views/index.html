@@ -1,4 +1,4 @@
-z<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,30 +11,31 @@ z<!DOCTYPE html>
     <div class="container">
         <div class="ui two column centered grid">
             <div class="column">
-                <div class="ui inverted segment">
+                <div class="ui inverted segment" style="margin-top:50px"> 
                     <div class="ui inverted form">
-                      <h5>Send SMS</h5>
+                      <h2>Send SMS</h2>
                       <div class="two fields">
                         <div class="field">
                           <label>Phone number</label>
-                          <input placeholder="Phone Number" type="tel">
+                          <input placeholder="Recipient Phone Number" id="number" type="tel">
                         </div>
                         <div class="field">
                           <label>Message</label>
-                          <input placeholder="Text" type="text">
+                          <input placeholder="Text to send" id="text" type="text">
                         </div>
                       </div>
-                      <div class="inline field">
-                        <div class="ui checkbox">
-                          <input type="checkbox" tabindex="0" class="hidden">
-                          <label>I agree to the terms and conditions</label>
-                        </div>
+                      
                       </div>
-                      <div class="ui submit button">Submit</div>
+                      <div class="ui submit button" id="button">Submit</div>
+                      <p class="response"></p>
                     </div>
                   </div>
             </div>
         </div>
     </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+
 </body>
 </html>
