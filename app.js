@@ -29,3 +29,8 @@ app.get('/', (req,res) => {
     res.render('index');    
 });
 
+app.post('/', (req,res) => {
+    res.send(req.body);
+    console.log(req.body)
+})
+
