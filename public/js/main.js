@@ -6,13 +6,13 @@ const numberInput = document.getElementById('number'),
 button.addEventListener('click', send, false);
 
 function send () {
-    const number = numberInput.nodeValue.replace(/\D/g, ''),
+    const number = numberInput.value.replace(/\D/g, ''),
           text = textInput.value;
 
     fetch('/', {
         method: 'post',
         headers: {
-            'content-type': 'application/json'
+          'Content-type': 'application/json'
         },
         body: JSON.stringify({number: number, text: text})
     })
@@ -21,5 +21,5 @@ function send () {
     })
     .catch((err)=> {
         console.log(err);
-    })
+    });
 }
